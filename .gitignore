@@ -1,0 +1,18 @@
+# react приложения
+/app/node_modules
+.pnp
+.pnp.js
+/app/coverage
+/app/build
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# еще надо добавить .env, но тут нет настоящей секретной информации и для удобство репозиторий сразу с .env
+# koa api 
+/api/dist
+/api/node_modules

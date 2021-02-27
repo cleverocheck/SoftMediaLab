@@ -1,0 +1,195 @@
+openapi: 3.0.0
+info:
+  title: API для тестового задания SoftMediaLab
+  description: Тут описаны все запросы для API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3001
+    description: Единстенный адрес api
+paths:
+  /getStudentsInfo:
+    get:
+      summary: возращает список студентов
+      description: По запросу возращает список всех студентов для таблицы
+      responses:
+        '200':    
+          description: массив студентов
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      default: 1
+                      description: Id студента
+                    full_name:
+                      type: string
+                      default: 'Пупкин Василий Васильевич'
+                      description: ФИО студента
+                    born_date:
+                      type: string
+                      default: '2000-09-01'
+                      description: Дата рождения студента
+                    performance:
+                      type: number
+                      default: 0
+                      description: Успеваемость студента (0 => неудовлетворительно, 1 => удовлетворительно, 2 => хорошо, 3 => отлично)
+  /createStudent:
+    put:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                full_name:         
+                  type: string
+                  default: 'Пупкин Василий Васильевич'
+                  description: ФИО нового студента
+                born_date:         
+                  type: string
+                  default: '01.09.2000'
+                  description: Дата рождения нового студента в любом строковом формате 
+                performance:         
+                  type: number
+                  default: 0
+                  description: Успеваемость нового студента (0 => неудовлетворительно, 1 => удовлетворительно, 2 => хорошо, 3 => отлично)
+              required:
+                - full_name
+                - born_date
+                - performance
+      summary: создание нового студента
+      description: Создает нового студента и возращает список старых
+      responses:
+        '200':    
+          description: массив студентов после добавления нового
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      default: 1
+                      description: Id студента
+                    full_name:
+                      type: string
+                      default: 'Пупкин Василий Васильевич'
+                      description: ФИО студента
+                    born_date:
+                      type: string
+                      default: '2000-09-01'
+                      description: Дата рождения студента
+                    performance:
+                      type: number
+                      default: 0
+                      description: Успеваемость студента (0 => неудовлетворительно, 1 => удовлетворительно, 2 => хорошо, 3 => отлично)
+  /changeStudent:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    full_name:         
+                      type: string
+                      default: 'Пупкин Василий Васильевич'
+                      description: Новое ФИО студента
+                    born_date:         
+                      type: string
+                      default: '01.09.2000'
+                      description: Новая дата в любом строковом формате 
+                    performance:         
+                      type: number
+                      default: 0
+                      description: Новая успеваемость студента (0 => неудовлетворительно, 1 => удовлетворительно, 2 => хорошо, 3 => отлично)
+                id:
+                  type: number
+                  default: 1
+                  description: Id студента, у которого будут меняться параметры
+              required:
+                - data
+                - id
+      summary: редактировани студента
+      description: Редактирует студента и возращает список всех студентов
+      responses:
+        '200':    
+          description: массив студентов после редактирования одного из студентов
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      default: 1
+                      description: Id студента
+                    full_name:
+                      type: string
+                      default: 'Пупкин Василий Васильевич'
+                      description: ФИО студента
+                    born_date:
+                      type: string
+                      default: '2000-09-01'
+                      description: Дата рождения студента
+                    performance:
+                      type: number
+                      default: 0
+                      description: Успеваемость студента (0 => неудовлетворительно, 1 => удовлетворительно, 2 => хорошо, 3 => отлично)
+  /deleteStudent:
+    delete:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: number
+                  default: 1
+                  description: Id студента, который будет удален
+              required:
+                - data
+                - id
+      summary: удаление студента
+      description: Удаляет студента и возращает список всех студентов
+      responses:
+        '200':    
+          description: массив студентов после удаления
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      default: 1
+                      description: Id студента
+                    full_name:
+                      type: string
+                      default: 'Пупкин Василий Васильевич'
+                      description: ФИО студента
+                    born_date:
+                      type: string
+                      default: '2000-09-01'
+                      description: Дата рождения студента
+                    performance:
+                      type: number
+                      default: 0
+                      description: Успеваемость студента (0 => неудовлетворительно, 1 => удовлетворительно, 2 => хорошо, 3 => отлично)

@@ -1,0 +1,33 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "main": "dist/app.js",
+  "author": "IgnatLomkov ignat2006l01@gmail.com",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@koa/cors": "^3.1.0",
+    "@types/koa": "^2.13.0",
+    "@types/koa-router": "^7.4.1",
+    "@types/node": "^14.14.31",
+    "co-body": "^6.1.0",
+    "dotenv": "^8.2.0",
+    "koa": "^2.13.1",
+    "koa-logger": "^3.2.1",
+    "koa-route": "^3.2.0",
+    "moment": "^2.29.1",
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.5.0",
+    "sequelize-auto": "^0.8.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.2.2"
+  },
+  "scripts": {
+    "dev": "nodemon --exec \"tsc && node .\"",
+    "models": "sequelize-auto -h 127.0.0.1 -d students -u postgres -x 59TkXvJEBqrjLmZFQL0isTU6jQQWsG -p 5432  --dialect postgres -c -o ./models -t -l ts",
+    "build": "tsc",
+    "start": "node ."
+  }
+}
