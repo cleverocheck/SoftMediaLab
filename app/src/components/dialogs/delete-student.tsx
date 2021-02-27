@@ -1,7 +1,7 @@
 import React from 'react'
 
 import StudentDeleteForm from '../forms/delete-student-confirm'
-import { deleteStudent } from '../../redux/actions/global'
+import { deleteStudent } from '../../redux/actions/global/index'
 import { ReducersTotal } from '../../redux/reducers/index'
 import { useSelector, useDispatch } from 'react-redux'
 
